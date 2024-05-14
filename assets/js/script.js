@@ -115,24 +115,77 @@ for (let i = 0; i < filterBtn.length; i++) {
 
 
 
+// // contact form variables
+// const form = document.querySelector("[data-form]");
+// const formInputs = document.querySelectorAll("[data-form-input]");
+// const formBtn = document.querySelector("[data-form-btn]");
+
+// // add event to all form input field
+// for (let i = 0; i < formInputs.length; i++) {
+//   formInputs[i].addEventListener("input", function () {
+
+//     // check form validation
+//     if (form.checkValidity()) {
+//       formBtn.removeAttribute("disabled");
+//     } else {
+//       formBtn.setAttribute("disabled", "");
+//     }
+
+//   });
+// }
+
 // contact form variables
 const form = document.querySelector("[data-form]");
 const formInputs = document.querySelectorAll("[data-form-input]");
 const formBtn = document.querySelector("[data-form-btn]");
 
-// add event to all form input field
+// Function to send email
+function sendEmail() {
+  const email = "kipkoechrottich@gmail.com";
+  const subject = "Feedback Form Submission";
+  const message = "Feedback has been successfully submitted.";
+  // Here you would send an email using your server or a third-party service
+  // For demonstration purpose, let's log the email details to console
+  console.log("Sending email to:", email);
+  console.log("Subject:", subject);
+  console.log("Message:", message);
+}
+
+// Function to display popup
+function displayPopup() {
+  alert("Feedback sent successfully!");
+}
+
+// Add event listener to form submission
+form.addEventListener("submit", function (event) {
+  event.preventDefault(); // Prevent default form submission
+
+  // Check form validation
+  if (form.checkValidity()) {
+    // Send email
+    sendEmail();
+    // Display popup
+    displayPopup();
+    // Reset form
+    form.reset();
+  } else {
+    // If form is not valid, show error or handle validation accordingly
+    console.log("Form is not valid.");
+  }
+});
+
+// Add event to all form input fields
 for (let i = 0; i < formInputs.length; i++) {
   formInputs[i].addEventListener("input", function () {
-
-    // check form validation
+    // Check form validation
     if (form.checkValidity()) {
       formBtn.removeAttribute("disabled");
     } else {
       formBtn.setAttribute("disabled", "");
     }
-
   });
 }
+
 
 
 
